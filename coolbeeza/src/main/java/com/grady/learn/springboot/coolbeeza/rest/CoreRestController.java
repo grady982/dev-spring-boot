@@ -10,4 +10,9 @@ public class CoreRestController {
     public String home() {
         return "Hello World!";
     }
+
+    @GetMapping("/workout")
+    public String getDailyWorkout() {
+        return "Run a hard 5k!";
+    }
 }
