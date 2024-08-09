@@ -1,5 +1,7 @@
 package com.grady.learn.springboot.coolbeeza.dbo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,11 +22,19 @@ public class StudentDAOImpl implements StudentDAO {
         this.entityManager = entityManager;
     }
 
-    // implement the method for saving a student
     @Override
     @Transactional
-    public void saveStudent(Student student) {
+    public void save(Student student) {
         entityManager.persist(student);
     }
 
+    @Override
+    public Student findById(Integer id) {
+        return entityManager.find(Student.class, id);
+    }
+
+    @Override
+    public List<Student> findAll() {
+        return entityManager.createQuery("FROM Student", Student.class).getResultList();
+    }
 }
