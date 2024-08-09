@@ -63,7 +63,4 @@ public class Student {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    // define the toString method
-
 }
